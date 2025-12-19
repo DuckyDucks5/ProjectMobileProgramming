@@ -10,23 +10,51 @@
     android:orientation="vertical"
     android:padding="20dp">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="Search your city"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageButton
+            android:id="@+id/cityListBtn"
+            android:src="@android:drawable/ic_menu_mapmode"
+            android:background="@android:color/transparent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+    </LinearLayout>
+
+<!--    search-->
     <EditText
-        android:id="@+id/cityInput"
-        android:hint="Masukkan nama kota"
+        android:id="@+id/searchCityEt"
+        android:hint="Enter city name"
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/searchBtn"
-        android:text="Cari Cuaca"
+        android:text="Search"
+        android:layout_marginHorizontal="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/resultText"
-        android:textSize="18sp"
-        android:paddingTop="20dp"
+<!--    view pager-->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 </LinearLayout>
