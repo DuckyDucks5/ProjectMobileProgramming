@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         repository = new WeatherRepository(this);
 
         viewPager = findViewById(R.id.viewPager);
-        EditText searchEt = findViewById(R.id.searchCityEt);
-        Button searchBtn = findViewById(R.id.searchBtn);
+        EditText searchEt = findViewById(R.id.searchCityEtCompact);
+        ImageButton searchBtn = findViewById(R.id.searchBtnEtCompact);
 
         loadSavedCity();
 

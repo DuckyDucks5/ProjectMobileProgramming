@@ -8,7 +8,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:fontFamily="@font/pressstart2p_regular"
+    android:background="@drawable/bg_gradient">
 
     <!-- Header with title (akan disembunyikan setelah ada kota) -->
     <LinearLayout
@@ -24,6 +26,7 @@
             android:text="Search your city"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
@@ -38,68 +41,112 @@
         android:layout_height="wrap_content">
 
         <!-- Search Bar Compact (hidden by default) -->
+        <!--Jadinya pakai yang ini-->
         <RelativeLayout
             android:id="@+id/searchBarCompact"
             android:background="@drawable/search_bar_background"
             android:paddingStart="20dp"
             android:paddingEnd="12dp"
-            android:paddingVertical="12dp"
+            android:paddingVertical="6dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/searchCityEtCompact"
-                android:hint="Search"
-                android:textColorHint="#999999"
-                android:textColor="#333333"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/searchBtnEtCompact"
                 android:background="@android:color/transparent"
+                android:hint="Enter city name"
                 android:textSize="16sp"
+                android:textColor="#333333"
+                android:textColorHint="#999999"
                 android:inputType="text"
                 android:imeOptions="actionSearch"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@id/searchBtnCompact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:paddingEnd="8dp"
+                android:gravity="center_vertical"/>
 
             <ImageButton
-                android:id="@+id/searchBtnCompact"
-                android:src="@drawable/ic_search"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="8dp"
+                android:id="@+id/searchBtnEtCompact"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                android:src="@drawable/ic_search"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Search"/>
 
         </RelativeLayout>
 
+        <!--Yang ini kukomen-->
         <!-- Search Layout Full (visible by default) -->
-        <LinearLayout
-            android:id="@+id/searchLayoutFull"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/searchLayoutFull"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
 
-            <EditText
-                android:id="@+id/searchCityEt"
-                android:hint="Enter city name"
-                android:layout_margin="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+<!--            <EditText-->
+<!--                android:id="@+id/searchCityEt"-->
+<!--                android:hint="Enter city name"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"/>-->
 
-            <Button
-                android:id="@+id/searchBtn"
-                android:text="Search"
-                android:layout_marginHorizontal="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+<!--            <Button-->
+<!--                android:id="@+id/searchBtn"-->
+<!--                android:text="Search"-->
+<!--                android:layout_marginHorizontal="16dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
+    </LinearLayout>
+
+    <!--Dot Indicator Halaman-->
+    <LinearLayout
+        android:id="@+id/dotIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/dot_active"/>
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/dot_inactive"/>
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/dot_inactive"/>
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/dot_inactive"/>
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/dot_inactive"/>
     </LinearLayout>
 
     <!-- ViewPager -->

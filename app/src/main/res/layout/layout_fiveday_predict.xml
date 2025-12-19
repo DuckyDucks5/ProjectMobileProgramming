@@ -38,27 +38,30 @@
 
                 <TextView
                     android:text="dd/mm"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_marginBottom="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
+                <!--hrsnya background ganti = android:src="@drawable/ic_weather"-->
                 <ImageView
-                    android:src="@drawable/ic_weather"
+                    android:background="@color/white"
                     android:layout_marginBottom="8dp"
                     android:layout_width="36dp"
                     android:layout_height="36dp"/>
 
                 <TextView
                     android:text="weather"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="XX°C"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -75,27 +78,30 @@
 
                 <TextView
                     android:text="dd/mm"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_marginBottom="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
+                <!--hrsnya background ganti = android:src="@drawable/ic_weather"-->
                 <ImageView
-                    android:src="@drawable/ic_weather"
+                    android:background="@color/white"
                     android:layout_marginBottom="8dp"
                     android:layout_width="36dp"
                     android:layout_height="36dp"/>
 
                 <TextView
                     android:text="weather"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="XX°C"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -112,27 +118,30 @@
 
                 <TextView
                     android:text="dd/mm"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_marginBottom="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
+                <!--hrsnya background ganti = android:src="@drawable/ic_weather"-->
                 <ImageView
-                    android:src="@drawable/ic_weather"
+                    android:background="@color/white"
                     android:layout_marginBottom="8dp"
                     android:layout_width="36dp"
                     android:layout_height="36dp"/>
 
                 <TextView
                     android:text="weather"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="XX°C"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -149,8 +158,8 @@
 
                 <TextView
                     android:text="dd/mm"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_marginBottom="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -163,13 +172,15 @@
 
                 <TextView
                     android:text="weather"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="XX°C"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -186,11 +197,12 @@
 
                 <TextView
                     android:text="dd/mm"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_marginBottom="8dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+                    <!--android:textStyle="bold" (fontnya gaada varian bold jadi ga keganti kalau pakai bold)-->
 
                 <ImageView
                     android:src="@drawable/ic_sunny"
@@ -200,13 +212,15 @@
 
                 <TextView
                     android:text="weather"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="XX°C"
-                    android:textSize="11sp"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
