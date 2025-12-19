@@ -10,7 +10,9 @@
     android:orientation="vertical"
     android:padding="20dp">
 
+    <!-- Header with title (akan disembunyikan setelah ada kota) -->
     <LinearLayout
+        android:id="@+id/headerLayout"
         android:orientation="horizontal"
         android:padding="16dp"
         android:gravity="center_vertical"
@@ -26,31 +28,81 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 
-        <ImageButton
-            android:id="@+id/cityListBtn"
-            android:src="@android:drawable/ic_menu_mapmode"
-            android:background="@android:color/transparent"
-            android:layout_width="40dp"
-            android:layout_height="40dp"/>
+    </LinearLayout>
+
+    <!-- Search Layout -->
+    <LinearLayout
+        android:id="@+id/searchLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Search Bar Compact (hidden by default) -->
+        <RelativeLayout
+            android:id="@+id/searchBarCompact"
+            android:background="@drawable/search_bar_background"
+            android:paddingStart="20dp"
+            android:paddingEnd="12dp"
+            android:paddingVertical="12dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/searchCityEtCompact"
+                android:hint="Search"
+                android:textColorHint="#999999"
+                android:textColor="#333333"
+                android:background="@android:color/transparent"
+                android:textSize="16sp"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/searchBtnCompact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageButton
+                android:id="@+id/searchBtnCompact"
+                android:src="@drawable/ic_search"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+        </RelativeLayout>
+
+        <!-- Search Layout Full (visible by default) -->
+        <LinearLayout
+            android:id="@+id/searchLayoutFull"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/searchCityEt"
+                android:hint="Enter city name"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/searchBtn"
+                android:text="Search"
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-<!--    search-->
-    <EditText
-        android:id="@+id/searchCityEt"
-        android:hint="Enter city name"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/searchBtn"
-        android:text="Search"
-        android:layout_marginHorizontal="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-<!--    view pager-->
+    <!-- ViewPager -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
