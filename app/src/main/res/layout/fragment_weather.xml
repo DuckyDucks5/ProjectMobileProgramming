@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:text="City"
+
+            android:textSize="26sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/pressstart2p_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_sunny"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:text="Cloudy"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/pressstart2p_regular"
+            android:layout_marginBottom="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:id="@+id/tvTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="30°C"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/pressstart2p_regular"/>
+
+        <TextView
+            android:text="Forecast"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <include layout="@layout/layout_forecast_today"/>
+
+        <include layout="@layout/layout_fiveday_predict"/>
+
+    </LinearLayout>
+</ScrollView>

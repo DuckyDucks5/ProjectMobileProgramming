@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="Five Day Prediction"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+<!--            day1-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginHorizontal="4dp"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_border">
+
+                <TextView
+                    android:text="dd/mm"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <!--hrsnya background ganti = android:src="@drawable/ic_weather"-->
+                <ImageView
+                    android:background="@color/white"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"/>
+
+                <TextView
+                    android:text="weather"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="XX°C"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginHorizontal="4dp"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_border">
+
+                <TextView
+                    android:text="dd/mm"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <!--hrsnya background ganti = android:src="@drawable/ic_weather"-->
+                <ImageView
+                    android:background="@color/white"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"/>
+
+                <TextView
+                    android:text="weather"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="XX°C"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginHorizontal="4dp"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_border">
+
+                <TextView
+                    android:text="dd/mm"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <!--hrsnya background ganti = android:src="@drawable/ic_weather"-->
+                <ImageView
+                    android:background="@color/white"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"/>
+
+                <TextView
+                    android:text="weather"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="XX°C"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginHorizontal="4dp"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_border">
+
+                <TextView
+                    android:text="dd/mm"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:src="@drawable/ic_sunny"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"/>
+
+                <TextView
+                    android:text="weather"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="XX°C"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginHorizontal="4dp"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_border">
+
+                <TextView
+                    android:text="dd/mm"
+                    android:textSize="9sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                    <!--android:textStyle="bold" (fontnya gaada varian bold jadi ga keganti kalau pakai bold)-->
+
+                <ImageView
+                    android:src="@drawable/ic_sunny"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"/>
+
+                <TextView
+                    android:text="weather"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="XX°C"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

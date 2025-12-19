@@ -4,14 +4,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.myapplication.api.APIClient;
+import com.example.myapplication.api.APIService;
+import com.example.myapplication.api.APISingleton;
+import com.example.myapplication.database.WeatherDAO;
+import com.example.myapplication.database.WeatherRepository;
+import com.example.myapplication.model.SavedCity;
+import com.example.myapplication.view.WeatherPagerAdapter;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,66 +27,94 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String API_KEY = BuildConfig.OPENWEATHER_API_KEY;
 
 
-    EditText cityInput;
-    Button searchBtn;
-    TextView resultText;
-
-
+    private ViewPager2 viewPager;
+    private WeatherPagerAdapter adapter;
+    private WeatherRepository repository;
+    private List<SavedCity> cities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        repository = new WeatherRepository(this);
 
+        viewPager = findViewById(R.id.viewPager);
+        EditText searchEt = findViewById(R.id.searchCityEtCompact);
+        ImageButton searchBtn = findViewById(R.id.searchBtnEtCompact);
 
-        cityInput = findViewById(R.id.cityInput);
-        searchBtn = findViewById(R.id.searchBtn);
-        resultText = findViewById(R.id.resultText);
+        loadSavedCity();
 
-        searchBtn.setOnClickListener(v -> {
-            String city = cityInput.getText().toString();
-            if (city.isEmpty()) {
-                Toast.makeText(this, "Masukkan nama kota", Toast.LENGTH_SHORT).show();
-            } else {
-                getWeather(city);
+        searchBtn.setOnClickListener(v ->{
+            String city = searchEt.getText().toString().trim();
+            if(!city.isEmpty()){
+                searchAndAddCity(city);
+                searchEt.setText("");
+                Toast.makeText(this, "Search: " + city, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
-    private void getWeather(String city) {
-        APIService apiService = APIClient.getClient().create(APIService.class);
-        Call<WeatherResponse> call = apiService.getWeatherByCity(city, API_KEY, "metric");
+    private void loadSavedCity(){
+        cities = repository.getSavedCity();
+        adapter = new WeatherPagerAdapter(this, cities);
+        viewPager.setAdapter(adapter);
+    }
 
-        call.enqueue(new Callback<WeatherResponse>() {
+    private void searchAndAddCity(String city){
+        APISingleton.getInstance().getWeatherByCity(
+                city,
+                BuildConfig.OPENWEATHER_API_KEY,
+                "metric"
+        ).enqueue(new Callback<WeatherResponse>() {
             @Override
             public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
-                if(response.isSuccessful() && response.body() != null){
-                    WeatherResponse data = response.body();
+                if (response.isSuccessful() && response.body() != null) {
+                    WeatherResponse weather = response.body();
 
-                    String text =
-                            "Kota: " + data.getName() + "\n" +
-                                    "Suhu: " + data.getMain().getTemp() + "`C\n" +
-                                    "Cuaca: " + data.getWeather().get(0).getDescription() + "\n" +
-                                    "Lat coord: " + data.getCoord().getLat() + "\n" +
-                                    "Lon coord: " + data.getCoord().getLon();
+                    // Dapat koordinat dari response
+                    String city = weather.getName();
+                    double lat = weather.getCoord().getLat();
+                    double lon = weather.getCoord().getLon();
 
-                    resultText.setText(text);
-                }
-                else{
-                    Toast.makeText(MainActivity.this, "Kota tidak ditemukan", Toast.LENGTH_SHORT).show();
+                    // Simpan ke database (isPrimary = 0 karena bukan kota utama)
+                    repository.insertCity(city, lat, lon, 0);
+
+                    // Buat object SavedCity baru
+                    SavedCity newCity = new SavedCity();
+                    newCity.setCity(city);
+                    newCity.setLat(lat);
+                    newCity.setLon(lon);
+                    newCity.setIsPrimary(0);
+
+                    // Tambahkan ke list
+                    cities.add(newCity);
+
+                    // Update adapter
+                    adapter.notifyItemInserted(cities.size() - 1);
+
+                    // Pindah ke halaman kota baru
+                    viewPager.setCurrentItem(cities.size() - 1, true);
+
+                    Toast.makeText(MainActivity.this,
+                            city + " berhasil ditambahkan",
+                            Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            "Kota tidak ditemukan",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<WeatherResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Gagal mengambil data", Toast.LENGTH_SHORT).show();
-                Log.e("API_ERROR", t.getMessage());
+                Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
 }
