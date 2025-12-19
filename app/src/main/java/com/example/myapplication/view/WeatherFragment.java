@@ -14,6 +14,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.WeatherResponse;
 import com.example.myapplication.api.APIClient;
 import com.example.myapplication.api.APIService;
+import com.example.myapplication.model.ForecastResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,6 +46,8 @@ public class WeatherFragment extends Fragment {
         TextView tvCity = view.findViewById(R.id.tvCity);
         TextView tvTemp = view.findViewById(R.id.tvTemp);
         TextView tvDesc = view.findViewById(R.id.tvDesc);
+        TextView tvWeather1 = view.findViewById(R.id.tvWeather1);
+        TextView tvWeather2 = view.findViewById(R.id.tvWeather2);
 
         if(getArguments() != null){
             String city = getArguments().getString(ARG_CITY);
@@ -69,6 +72,25 @@ public class WeatherFragment extends Fragment {
                 @Override
                 public void onFailure(Call<WeatherResponse> call, Throwable t) {
                     tvDesc.setText("Failed to load weather");
+                }
+            });
+
+            api.getForecast(lat, lon, API_KEY, "metric").enqueue(new Callback<ForecastResponse>() {
+                @Override
+                public void onResponse(Call<ForecastResponse> call, Response<ForecastResponse> response) {
+                    if(response.isSuccessful() && response.body() != null){
+                        ForecastResponse forecast = response.body();
+                        tvWeather1.setText(forecast.getList().get(0)
+                                .getWeather().get(0).getDescription());
+
+                        tvWeather2.setText(forecast.getList().get(0)
+                                .getWeather().get(0).getDescription());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ForecastResponse> call, Throwable t) {
+
                 }
             });
 
