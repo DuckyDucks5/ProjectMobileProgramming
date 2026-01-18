@@ -1,7 +1,6 @@
 package com.example.myapplication.database;
 
-import android.content.Context;
-
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.api.APIClient;
 import com.example.myapplication.api.APIService;
 import com.example.myapplication.model.SavedCity;
@@ -12,7 +11,7 @@ public class WeatherRepository {
     private APIService api;
     private WeatherDAO dao;
 
-    public WeatherRepository(Context context) {
+    public WeatherRepository(MainActivity context) {
         api = APIClient.getClient().create(APIService.class);
         dao = new WeatherDAO(context);
     }

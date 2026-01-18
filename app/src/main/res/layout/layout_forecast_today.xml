@@ -38,6 +38,7 @@
 
                 <TextView
                     android:text="9"
+                    android:id="@+id/hourWeather1"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -58,6 +59,7 @@
 
                 <TextView
                     android:text="XX°C"
+                    android:id="@+id/tempWeather1"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -74,6 +76,7 @@
 
                 <TextView
                     android:text="12"
+                    android:id="@+id/hourWeather2"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -94,6 +97,7 @@
 
                 <TextView
                     android:text="XX°C"
+                    android:id="@+id/tempWeather2"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -109,6 +113,7 @@
 
                 <TextView
                     android:text="15"
+                    android:id="@+id/hourWeather3"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -121,6 +126,7 @@
 
                 <TextView
                     android:text="weather"
+                    android:id="@+id/tvWeather3"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -128,6 +134,7 @@
 
                 <TextView
                     android:text="XX°C"
+                    android:id="@+id/tempWeather3"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -143,6 +150,7 @@
 
                 <TextView
                     android:text="18"
+                    android:id="@+id/hourWeather4"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -155,6 +163,7 @@
 
                 <TextView
                     android:text="weather"
+                    android:id="@+id/tvWeather4"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -162,6 +171,7 @@
 
                 <TextView
                     android:text="XX°C"
+                    android:id="@+id/tempWeather4"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -177,6 +187,7 @@
 
                 <TextView
                     android:text="21"
+                    android:id="@+id/hourWeather5"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -189,6 +200,7 @@
 
                 <TextView
                     android:text="weather"
+                    android:id="@+id/tvWeather5"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -196,6 +208,7 @@
 
                 <TextView
                     android:text="XX°C"
+                    android:id="@+id/tempWeather5"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -212,6 +225,7 @@
                 <TextView
                     android:text="00"
                     android:textStyle="bold"
+                    android:id="@+id/hourWeather6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -223,6 +237,7 @@
 
                 <TextView
                     android:text="weather"
+                    android:id="@+id/tvWeather6"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"
@@ -230,6 +245,7 @@
 
                 <TextView
                     android:text="XX°C"
+                    android:id="@+id/tempWeather6"
                     android:textSize="8sp"
                     android:fontFamily="@font/pressstart2p_regular"
                     android:layout_width="wrap_content"

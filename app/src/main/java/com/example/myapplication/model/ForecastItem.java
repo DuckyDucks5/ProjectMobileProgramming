@@ -6,6 +6,7 @@ public class ForecastItem {
     private MainWeather main;
     private List<Weather> weather;
     private String dt_txt;
+    private double temp;
 
     public ForecastItem(String dt_txt, List<Weather> weather, MainWeather main) {
         this.dt_txt = dt_txt;
