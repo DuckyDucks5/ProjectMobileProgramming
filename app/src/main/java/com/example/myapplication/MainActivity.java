@@ -16,6 +16,7 @@ import com.example.myapplication.api.APIService;
 import com.example.myapplication.api.APISingleton;
 import com.example.myapplication.database.WeatherDAO;
 import com.example.myapplication.database.WeatherRepository;
+import com.example.myapplication.model.CurrentWeatherResponse;
 import com.example.myapplication.model.SavedCity;
 import com.example.myapplication.view.WeatherPagerAdapter;
 
@@ -69,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
                 city,
                 BuildConfig.OPENWEATHER_API_KEY,
                 "metric"
-        ).enqueue(new Callback<WeatherResponse>() {
+        ).enqueue(new Callback<CurrentWeatherResponse>() {
             @Override
-            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+            public void onResponse(Call<CurrentWeatherResponse> call, Response<CurrentWeatherResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    WeatherResponse weather = response.body();
+                    CurrentWeatherResponse weather = response.body();
 
                     // Dapat koordinat dari response
                     String city = weather.getName();
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<WeatherResponse> call, Throwable t) {
+            public void onFailure(Call<CurrentWeatherResponse> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -10,6 +10,15 @@ public class CurrentWeatherResponse {
     private int timezone;
     private String name;
     private int id;
+    private long dt;
+
+    public long getDt() {
+        return dt;
+    }
+
+    public void setDt(long dt) {
+        this.dt = dt;
+    }
 
     public CurrentWeatherResponse(Coord coord, List<Weather> weather, MainWeather main, Sys sys, int timezone, String name, int id) {
         this.coord = coord;

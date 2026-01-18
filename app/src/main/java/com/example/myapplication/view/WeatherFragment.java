@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.BuildConfig;
@@ -97,6 +98,22 @@ public class WeatherFragment extends Fragment {
         TextView weatherDay5 = view.findViewById(R.id.weatherDay5);
         TextView tempDay5 = view.findViewById(R.id.tempDay5);
 
+        ImageView imgWeather = view.findViewById(R.id.imgWeather);
+
+        ImageView imgDay1 = view.findViewById(R.id.imgDay1);
+        ImageView imgDay2 = view.findViewById(R.id.imgDay2);
+        ImageView imgDay3 = view.findViewById(R.id.imgDay3);
+        ImageView imgDay4 = view.findViewById(R.id.imgDay4);
+        ImageView imgDay5 = view.findViewById(R.id.imgDay5);
+
+        ImageView imgWeather1 = view.findViewById(R.id.imgWeather1);
+        ImageView imgWeather2 = view.findViewById(R.id.imgWeather2);
+        ImageView imgWeather3 = view.findViewById(R.id.imgWeather3);
+        ImageView imgWeather4 = view.findViewById(R.id.imgWeather4);
+        ImageView imgWeather5 = view.findViewById(R.id.imgWeather5);
+        ImageView imgWeather6 = view.findViewById(R.id.imgWeather6);
+
+
         if(getArguments() != null){
             String city = getArguments().getString(ARG_CITY);
             double lat = getArguments().getDouble(ARG_LAT);
@@ -107,18 +124,26 @@ public class WeatherFragment extends Fragment {
             APIService api = APIClient.getClient().create(APIService.class);
             String API_KEY = BuildConfig.OPENWEATHER_API_KEY;
 
-            api.getCurrentWeather(lat, lon, API_KEY, "metric").enqueue(new Callback<WeatherResponse>() {
+            api.getCurrentWeather(lat, lon, API_KEY, "metric").enqueue(new Callback<CurrentWeatherResponse>() {
                 @Override
-                public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+                public void onResponse(Call<CurrentWeatherResponse> call, Response<CurrentWeatherResponse> response) {
                     if(response.isSuccessful() && response.body() != null){
-                        WeatherResponse weather = response.body();
-                        tvTemp.setText(weather.getMain().getTemp() + "°C");
+                        CurrentWeatherResponse weather = response.body();
+                        long now = weather.getDt();
+                        long sunrise = weather.getSys().getSunrise();
+                        long sunset = weather.getSys().getSunset();
+
+                        boolean isNight = now < sunrise || now > sunset;
+
+
+                        tvTemp.setText(weather.getMain().getTemp() + "°C ");
                         tvDesc.setText(weather.getWeather().get(0).getDescription());
+                        imgWeather.setImageResource(getWeatherIcon(weather.getWeather().get(0).getMain(), isNight));
                     }
                 }
 
                 @Override
-                public void onFailure(Call<WeatherResponse> call, Throwable t) {
+                public void onFailure(Call<CurrentWeatherResponse> call, Throwable t) {
                     tvDesc.setText("Failed to load weather");
                 }
             });
@@ -140,41 +165,49 @@ public class WeatherFragment extends Fragment {
                                 ForecastItem item = list.get(i);
 
                                 String hour = item.getDt_txt().substring(11, 13);
-                                String desc = item.getWeather().get(0).getMain();
+                                int hourInt = Integer.parseInt(hour);
+                                String main = item.getWeather().get(0).getMain();
                                 String temp = item.getMain().getTemp() + "°C";
 
+                                boolean isNight = hourInt > 18 || hourInt < 6;
 
                                 int displayIndex = i - startIndex; // 0..5
 
                                 switch (displayIndex) {
                                     case 0:
+                                        imgWeather1.setImageResource(getWeatherIcon(main, isNight));
                                         hourWeather1.setText(hour);
-                                        tvWeather1.setText(desc);
+                                        tvWeather1.setText(main);
                                         tempWeather1.setText(temp);
                                         break;
                                     case 1:
+                                        imgWeather2.setImageResource(getWeatherIcon(main, isNight));
                                         hourWeather2.setText(hour);
-                                        tvWeather2.setText(desc);
+                                        tvWeather2.setText(main);
                                         tempWeather2.setText(temp);
                                         break;
                                     case 2:
+                                        imgWeather3.setImageResource(getWeatherIcon(main, isNight));
                                         hourWeather3.setText(hour);
-                                        tvWeather3.setText(desc);
+                                        tvWeather3.setText(main);
                                         tempWeather3.setText(temp);
                                         break;
                                     case 3:
+                                        imgWeather4.setImageResource(getWeatherIcon(main, isNight));
                                         hourWeather4.setText(hour);
-                                        tvWeather4.setText(desc);
+                                        tvWeather4.setText(main);
                                         tempWeather4.setText(temp);
                                         break;
                                     case 4:
+                                        imgWeather5.setImageResource(getWeatherIcon(main, isNight));
                                         hourWeather5.setText(hour);
-                                        tvWeather5.setText(desc);
+                                        tvWeather5.setText(main);
                                         tempWeather5.setText(temp);
                                         break;
                                     case 5:
+                                        imgWeather6.setImageResource(getWeatherIcon(main, isNight));
                                         hourWeather6.setText(hour);
-                                        tvWeather6.setText(desc);
+                                        tvWeather6.setText(main);
                                         tempWeather6.setText(temp);
                                         break;
                                 }
@@ -188,6 +221,8 @@ public class WeatherFragment extends Fragment {
                                 // yyyy-MM-dd
                                 String date = item.getDt_txt().substring(0, 10);
                                 String time = item.getDt_txt().substring(11, 19);
+
+
 
                                 if (date.equals(todayDate)) {
                                     continue;
@@ -211,33 +246,43 @@ public class WeatherFragment extends Fragment {
 
                                 String day = item.getDt_txt().substring(8,10);
                                 String month = item.getDt_txt().substring(5,7);
-                                String desc = item.getWeather().get(0).getMain(); // Cuaca
-                                String temp = item.getMain().getTemp() + "°C";    // Suhu
+
+                                String hour = item.getDt_txt().substring(11, 13);
+                                int hourInt = Integer.parseInt(hour);
+                                String main = item.getWeather().get(0).getMain();
+                                String temp = item.getMain().getTemp() + "°C";
+
+                                boolean isNight = hourInt > 18 || hourInt < 6;
 
                                 switch (dayIndex) {
                                     case 0:
+                                        imgDay1.setImageResource(getWeatherIcon(main, isNight));
                                         dateDay1.setText(day + "/" + month);
-                                        weatherDay1.setText(desc);
+                                        weatherDay1.setText(main);
                                         tempDay1.setText(temp);
                                         break;
                                     case 1:
+                                        imgDay2.setImageResource(getWeatherIcon(main, isNight));
                                         dateDay2.setText(day + "/" + month);
-                                        weatherDay2.setText(desc);
+                                        weatherDay2.setText(main);
                                         tempDay2.setText(temp);
                                         break;
                                     case 2:
+                                        imgDay3.setImageResource(getWeatherIcon(main, isNight));
                                         dateDay3.setText(day + "/" + month);
-                                        weatherDay3.setText(desc);
+                                        weatherDay3.setText(main);
                                         tempDay3.setText(temp);
                                         break;
                                     case 3:
+                                        imgDay4.setImageResource(getWeatherIcon(main, isNight));
                                         dateDay4.setText(day + "/" + month);
-                                        weatherDay4.setText(desc);
+                                        weatherDay4.setText(main);
                                         tempDay4.setText(temp);
                                         break;
                                     case 4:
+                                        imgDay5.setImageResource(getWeatherIcon(main, isNight));
                                         dateDay5.setText(day + "/" + month);
-                                        weatherDay5.setText(desc);
+                                        weatherDay5.setText(main);
                                         tempDay5.setText(temp);
                                         break;
                                 }
@@ -263,7 +308,41 @@ public class WeatherFragment extends Fragment {
 
         }
 
+
+
+
+
         return view;
 
     }
+
+    private int getWeatherIcon(String weather, boolean isNight) {
+        switch (weather) {
+            case "Clear":
+                return isNight
+                        ? R.drawable.ic_moon
+                        : R.drawable.ic_sunnyday;
+
+            case "Clouds":
+                return isNight
+                        ? R.drawable.ic_cloudynight
+                        : R.drawable.ic_cloudyday;
+
+            case "Rain":
+                return R.drawable.ic_rainyday;
+
+            case "Thunderstorm":
+                return R.drawable.ic_stormy;
+
+            case "Snow":
+                return R.drawable.ic_snowyday;
+
+            case "Mist":
+                return R.drawable.ic_windy;
+            default:
+                return R.drawable.ic_rainyday;
+        }
+    }
+
+
 }

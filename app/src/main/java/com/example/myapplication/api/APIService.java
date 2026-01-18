@@ -1,6 +1,7 @@
 package com.example.myapplication.api;
 
 import com.example.myapplication.WeatherResponse;
+import com.example.myapplication.model.CurrentWeatherResponse;
 import com.example.myapplication.model.ForecastResponse;
 
 import retrofit2.Call;
@@ -10,7 +11,7 @@ import retrofit2.http.Query;
 public interface APIService {
 
     @GET("data/2.5/weather")
-    Call<WeatherResponse> getWeatherByCity(
+    Call<CurrentWeatherResponse> getWeatherByCity(
         @Query("q") String city,
         @Query("appid") String apiKey,
         @Query("units") String units
@@ -18,7 +19,7 @@ public interface APIService {
 
     // Cuaca saat ini berdasarkan KOORDINAT
     @GET("data/2.5/weather")
-    Call<WeatherResponse> getCurrentWeather(
+    Call<CurrentWeatherResponse> getCurrentWeather(
             @Query("lat") double lat,
             @Query("lon") double lon,
             @Query("appid") String apiKey,
