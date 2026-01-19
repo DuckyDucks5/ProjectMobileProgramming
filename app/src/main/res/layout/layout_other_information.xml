@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/pressstart2p_regular">
+
+    <!-- Judul -->
+    <TextView
+        android:text="Other Information"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- HUMIDITY -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_border"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_gravity="start|top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_humidity"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="Humidity Icon"
+                    android:layout_marginEnd="4dp"/>
+
+                <TextView
+                    android:text="HUMIDITY"
+                    android:textSize="10sp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- Value tengah -->
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:text="--%"
+                android:textSize="20sp"
+                android:fontFamily="@font/pressstart2p_regular"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+
+        <!--SUNRISE SUNSET (bagian kanan)-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <!--Sunrise-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_border"
+                android:padding="8dp">
+
+                <!-- Label -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_gravity="start|top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_sunrise"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="Sunrise Icon"
+                        android:layout_marginEnd="4dp"/>
+
+                    <TextView
+                        android:text="SUNRISE"
+                        android:textSize="7sp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/pressstart2p_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <!-- Time -->
+                <TextView
+                    android:id="@+id/tvSunrise"
+                    android:text="--:--"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </FrameLayout>
+
+
+            <!--Sunset-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/bg_border"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_gravity="start|top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_sunset"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="Sunset Icon"
+                        android:layout_marginEnd="4dp"/>
+
+                    <TextView
+                        android:text="SUNSET"
+                        android:textSize="7sp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/pressstart2p_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvSunset"
+                    android:text="--:--"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/pressstart2p_regular"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

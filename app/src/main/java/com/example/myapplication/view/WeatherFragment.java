@@ -26,6 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -114,6 +115,11 @@ public class WeatherFragment extends Fragment {
         ImageView imgWeather6 = view.findViewById(R.id.imgWeather6);
 
 
+        TextView tvHumidity = view.findViewById(R.id.tvHumidity);
+        TextView tvSunrise  = view.findViewById(R.id.tvSunrise);
+        TextView tvSunset   = view.findViewById(R.id.tvSunset);
+
+
         if(getArguments() != null){
             String city = getArguments().getString(ARG_CITY);
             double lat = getArguments().getDouble(ARG_LAT);
@@ -139,6 +145,18 @@ public class WeatherFragment extends Fragment {
                         tvTemp.setText(weather.getMain().getTemp() + "°C ");
                         tvDesc.setText(weather.getWeather().get(0).getDescription());
                         imgWeather.setImageResource(getWeatherIcon(weather.getWeather().get(0).getMain(), isNight));
+
+                        tvHumidity.setText(
+                                weather.getMain().getHumidity() + "%"
+                        );
+
+                        int timezoneOffset = weather.getTimezone();
+                        tvSunrise.setText(
+                                formatTime(weather.getSys().getSunrise(), timezoneOffset)
+                        );
+                        tvSunset.setText(
+                                formatTime(weather.getSys().getSunset(), timezoneOffset)
+                        );
                     }
                 }
 
@@ -147,6 +165,7 @@ public class WeatherFragment extends Fragment {
                     tvDesc.setText("Failed to load weather");
                 }
             });
+
 
             api.getForecast(lat, lon, API_KEY, "metric")
                 .enqueue(new Callback<ForecastResponse>() {
@@ -293,8 +312,6 @@ public class WeatherFragment extends Fragment {
 
 
 
-
-
                         }
                     }
 
@@ -344,5 +361,13 @@ public class WeatherFragment extends Fragment {
         }
     }
 
+    private String formatTime(long unixSeconds, int timezoneOffsetSeconds) {
+        // timezoneOffsetSeconds dari API (misal +7200 untuk UTC+2
+        long localMillis = (unixSeconds + timezoneOffsetSeconds) * 1000L;
+        Date date = new Date(localMillis);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return sdf.format(date);
+    }
 }

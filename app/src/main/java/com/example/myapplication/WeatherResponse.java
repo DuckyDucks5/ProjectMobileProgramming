@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import com.example.myapplication.model.Sys;
+
 import java.util.List;
 
 public class WeatherResponse {
@@ -8,6 +10,7 @@ public class WeatherResponse {
     private List<Weather> weather;
     private String name;
 
+
     public String getName() {
         return name;
     }
@@ -15,7 +18,6 @@ public class WeatherResponse {
     public Coord getCoord(){
         return coord;
     }
-
 
     public Main getMain() {
         return main;

@@ -61,5 +61,7 @@
 
         <include layout="@layout/layout_fiveday_predict"/>
 
+        <include layout="@layout/layout_other_information"/>
+
     </LinearLayout>
 </ScrollView>
