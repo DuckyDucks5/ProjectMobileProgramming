@@ -38,6 +38,8 @@ public class WeatherFragment extends Fragment {
     private static final String ARG_LAT = "lat";
     private static final String ARG_LON = "lon";
 
+    private int timezoneOffset;
+
 
     public static WeatherFragment newInstance(String city, double lat, double lon) {
         WeatherFragment fragment = new WeatherFragment();
@@ -150,7 +152,7 @@ public class WeatherFragment extends Fragment {
                                 weather.getMain().getHumidity() + "%"
                         );
 
-                        int timezoneOffset = weather.getTimezone();
+                        timezoneOffset = weather.getTimezone();
                         tvSunrise.setText(
                                 formatTime(weather.getSys().getSunrise(), timezoneOffset)
                         );
@@ -187,45 +189,49 @@ public class WeatherFragment extends Fragment {
                                 int hourInt = Integer.parseInt(hour);
                                 String main = item.getWeather().get(0).getMain();
                                 String temp = item.getMain().getTemp() + "°C";
+                                long dt = item.getDt();
 
-                                boolean isNight = hourInt > 18 || hourInt < 6;
+                                int localHour = getLocalHour(item.getDt(), timezoneOffset);
+                                boolean isNight = localHour > 18 || localHour < 6;
+
+                                String local = String.valueOf(localHour);
 
                                 int displayIndex = i - startIndex; // 0..5
 
                                 switch (displayIndex) {
                                     case 0:
                                         imgWeather1.setImageResource(getWeatherIcon(main, isNight));
-                                        hourWeather1.setText(hour);
+                                        hourWeather1.setText(local);
                                         tvWeather1.setText(main);
                                         tempWeather1.setText(temp);
                                         break;
                                     case 1:
                                         imgWeather2.setImageResource(getWeatherIcon(main, isNight));
-                                        hourWeather2.setText(hour);
+                                        hourWeather2.setText(local);
                                         tvWeather2.setText(main);
                                         tempWeather2.setText(temp);
                                         break;
                                     case 2:
                                         imgWeather3.setImageResource(getWeatherIcon(main, isNight));
-                                        hourWeather3.setText(hour);
+                                        hourWeather3.setText(local);
                                         tvWeather3.setText(main);
                                         tempWeather3.setText(temp);
                                         break;
                                     case 3:
                                         imgWeather4.setImageResource(getWeatherIcon(main, isNight));
-                                        hourWeather4.setText(hour);
+                                        hourWeather4.setText(local);
                                         tvWeather4.setText(main);
                                         tempWeather4.setText(temp);
                                         break;
                                     case 4:
                                         imgWeather5.setImageResource(getWeatherIcon(main, isNight));
-                                        hourWeather5.setText(hour);
+                                        hourWeather5.setText(local);
                                         tvWeather5.setText(main);
                                         tempWeather5.setText(temp);
                                         break;
                                     case 5:
                                         imgWeather6.setImageResource(getWeatherIcon(main, isNight));
-                                        hourWeather6.setText(hour);
+                                        hourWeather6.setText(local);
                                         tvWeather6.setText(main);
                                         tempWeather6.setText(temp);
                                         break;
@@ -240,8 +246,6 @@ public class WeatherFragment extends Fragment {
                                 // yyyy-MM-dd
                                 String date = item.getDt_txt().substring(0, 10);
                                 String time = item.getDt_txt().substring(11, 19);
-
-
 
                                 if (date.equals(todayDate)) {
                                     continue;
@@ -370,4 +374,16 @@ public class WeatherFragment extends Fragment {
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         return sdf.format(date);
     }
+
+    private int getLocalHour(long dt, int timezoneOffset) {
+        long localMillis = (dt + timezoneOffset) * 1000L;
+        Date date = new Date(localMillis);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH", Locale.getDefault());
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        return Integer.parseInt(sdf.format(date));
+    }
+
+
 }
