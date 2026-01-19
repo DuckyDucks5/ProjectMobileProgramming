@@ -6,6 +6,24 @@ public class ForecastItem {
     private MainWeather main;
     private List<Weather> weather;
     private String dt_txt;
+    private long dt;
+
+    public void setDt(long dt) {
+        this.dt = dt;
+    }
+
+    public long getDt() {
+        return dt;
+    }
+
+    public double getTemp() {
+        return temp;
+    }
+
+    public void setTemp(double temp) {
+        this.temp = temp;
+    }
+
     private double temp;
 
     public ForecastItem(String dt_txt, List<Weather> weather, MainWeather main) {
